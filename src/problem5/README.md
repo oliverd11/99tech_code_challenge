@@ -80,12 +80,13 @@ This endpoint allows users to update their score after completing an action. The
 ```
 
 #### **Sample Request**
-```json
+```properties
 POST /api/v1/update-score HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
 Authorization: Bearer YOUR_AUTH_TOKEN
-
+```
+```json
 {
   "user_id": "user_123",
   "score": 50,
@@ -140,7 +141,7 @@ No request body needed.
 ```
 
 #### **Sample Request**
-```json
+```properties
 GET /api/v1/top-scores HTTP/1.1
 Host: api.example.com
 ```
