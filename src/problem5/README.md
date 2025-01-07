@@ -36,9 +36,9 @@ This endpoint allows users to update their score after completing an action. The
 #### **Request Body**
 ```json
 {
-  "user_id": "string",   // The unique ID of the user whose score is being updated.
-  "score": "number",     // The amount to increase the score by (should be a positive integer).
-  "auth_token": "string" // The authentication token to verify the user.
+  "user_id": "string",
+  "score": "number",
+  "auth_token": "string"
 }
 ```
 
@@ -127,7 +127,34 @@ No request body needed.
       "user_id": "user_789",
       "score": 280
     },
-    // ... other users
+    {
+      "user_id": "user_112",
+      "score": 270
+    },
+    {
+      "user_id": "user_113",
+      "score": 260
+    },
+    {
+      "user_id": "user_222",
+      "score": 250
+    },
+    {
+      "user_id": "user_333",
+      "score": 240
+    },
+    {
+      "user_id": "user_444",
+      "score": 230
+    },
+    {
+      "user_id": "user_555",
+      "score": 220
+    },
+    {
+      "user_id": "user_666",
+      "score": 210
+    }
   ]
 }
 ```
