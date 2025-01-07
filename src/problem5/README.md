@@ -241,4 +241,15 @@ Host: api.example.com
 - Backend should validate that the score is a positive integer and that the `user_id` is valid.
 - If any input is malformed or missing, the API will respond with a 400 Bad Request.
 
-![image](https://github.com/user-attachments/assets/e4db50f2-f2f1-47a1-aed4-526b743a5da5)
+### 5. **Logging and Monitoring:**
+- All score updates and API interactions should be logged for auditing purposes.
+- Monitoring tools (e.g., Cloudwatch, X-Ray, Datadog) should be in place to track and alert on unusual activities (e.g., a sudden spike in score updates).
+
+---
+
+## Diagram
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/e4db50f2-f2f1-47a1-aed4-526b743a5da5">
+</div>
+
