@@ -25,3 +25,192 @@ This software module is designed to handle the API service for a website that di
 - A secure endpoint to handle score updates and ensure that users' scores are only changed if they are authorized to do so.
 
 ---
+
+## API Specifications
+
+### 1. **POST /api/v1/update-score**
+
+#### **Description**
+This endpoint allows users to update their score after completing an action. The score update request must contain the user ID, score to increase, and a valid authorization token to verify the user.
+
+#### **Request Body**
+```json
+{
+  "user_id": "string",   // The unique ID of the user whose score is being updated.
+  "score": "number",     // The amount to increase the score by (should be a positive integer).
+  "auth_token": "string" // The authentication token to verify the user.
+}
+```
+
+#### **Header**
+- `Content-Type`: application/json
+- `Authorization`: Bearer {auth_token} (Optional: Depends on token management implementation)
+
+#### **Response**
+- Success (200 OK)
+```json
+{
+  "status": "success",
+  "message": "Score updated successfully."
+}
+```
+
+- Unauthorized (401 Unauthorized)
+```json
+{
+  "status": "error",
+  "message": "Unauthorized access. Invalid or missing token."
+}
+```
+
+- Invalid Input (400 Bad Request)
+```json
+{
+  "status": "error",
+  "message": "Invalid input. Please check the user ID and score."
+}
+```
+
+- Internal Server Error (500 Internal Server Error)
+```json
+{
+  "status": "error",
+  "message": "An unexpected error occurred. Please try again later."
+}
+```
+
+#### **Sample Request**
+```json
+POST /api/v1/update-score HTTP/1.1
+Host: api.example.com
+Content-Type: application/json
+Authorization: Bearer YOUR_AUTH_TOKEN
+
+{
+  "user_id": "user_123",
+  "score": 50,
+  "auth_token": "YOUR_AUTH_TOKEN"
+}
+```
+#### **Sample Response**
+```json
+{
+  "status": "success",
+  "message": "Score updated successfully."
+}
+```
+
+### 2. **GET /api/v1/top-scores**
+
+#### **Description**
+This endpoint retrieves the top 10 highest user scores, which are displayed on the scoreboard.
+
+#### **Request Body**
+No request body needed.
+
+#### **Response**
+- Success (200 OK)
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "user_id": "user_123",
+      "score": 300
+    },
+    {
+      "user_id": "user_456",
+      "score": 290
+    },
+    {
+      "user_id": "user_789",
+      "score": 280
+    },
+    // ... other users
+  ]
+}
+```
+
+- Internal Server Error (500 Internal Server Error)
+```json
+{
+  "status": "error",
+  "message": "An error occurred while fetching the top scores. Please try again later."
+}
+```
+
+#### **Sample Request**
+```json
+GET /api/v1/top-scores HTTP/1.1
+Host: api.example.com
+```
+#### **Sample Response**
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "user_id": "user_123",
+      "score": 300
+    },
+    {
+      "user_id": "user_456",
+      "score": 290
+    },
+    {
+      "user_id": "user_789",
+      "score": 280
+    },
+    {
+      "user_id": "user_112",
+      "score": 270
+    },
+    {
+      "user_id": "user_113",
+      "score": 260
+    },
+    {
+      "user_id": "user_222",
+      "score": 250
+    },
+    {
+      "user_id": "user_333",
+      "score": 240
+    },
+    {
+      "user_id": "user_444",
+      "score": 230
+    },
+    {
+      "user_id": "user_555",
+      "score": 220
+    },
+    {
+      "user_id": "user_666",
+      "score": 210
+    }
+  ]
+}
+```
+
+---
+
+## Considerations
+
+### 1. **Authentication:**
+- Every score update request should include a valid authentication token (JWT or API key).
+- Tokens should be validated to ensure that the user is authenticated.
+- Tokens must be checked for expiration and validity on each request.
+
+### 2. **Authorization:**
+- Only the legitimate user who owns the `user_id` can update their score.
+- Backend will validate that the `user_id` in the request matches the authenticated user associated with the `auth_token`.
+
+### 3. **Rate Limiting:**
+- To prevent malicious users from spamming the score update endpoint, rate limiting will be applied. For example, a user can only make 5 requests per minute.
+
+### 4. **Input Validation:**
+- Backend should validate that the score is a positive integer and that the `user_id` is valid.
+- If any input is malformed or missing, the API will respond with a 400 Bad Request.
+
+![image](https://github.com/user-attachments/assets/e4db50f2-f2f1-47a1-aed4-526b743a5da5)
