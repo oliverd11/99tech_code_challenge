@@ -5,9 +5,9 @@ services:
     build: .
     image: problem5
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/problem5
+      - MONGO_URI=mongodb://mongodb:27017/problem5
     ports:
-      - '3000:3000'
+      - '5000:5000'
     depends_on:
       - mongodb
     volumes:
