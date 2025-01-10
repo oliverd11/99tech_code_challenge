@@ -4,7 +4,7 @@ RUN mkdir -p /usr && chown -R node:node /usr
 
 WORKDIR /usr
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 RUN npm install --pure-lockfile
 
