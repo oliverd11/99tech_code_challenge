@@ -19,42 +19,30 @@ Follow these step to install and run this application locally:
     cd src/problem6
     ```
 
-2. Install dependencies:
-
-    ```bash
-    npm install
-    ```
-
-3. Set the environment variables:
+2. Set the environment variables:
 
     ```bash
     cp .env.example .env
     ```
 
-4. Set the docker compose file:
+3. Set the docker compose file:
 
     ```bash
     cp docker-compose.yaml.example docker-compose.yaml
     ```
 
-5. Start docker container:
-
-    ```bash
-    npm run docker:run
-    ```
-
 ## Commands
 
-Running locally:
+1. Running locally:
 
 ```bash
+npm install
 npm run start
 ```
 
-Docker:
+2. Docker:
 
 ```bash
-# run docker container
 npm run docker:run
 ```
 
@@ -66,7 +54,7 @@ The environment variables can be found and modified in the `.env` file. They com
 # Port number
 PORT=5000
 # URL of the Mongo DB
-MONGODB_URL=mongodb://127.0.0.1:27017/resource_demo
+MONGODB_URL=mongodb://127.0.0.1:27017/problem6
 ```
 
 ## Endpoints
