@@ -6,7 +6,7 @@ WORKDIR /usr
 
 COPY package.json ./
 
-RUN npm install --pure-lockfile
+RUN npm install
 
 RUN npm install -g typescript ts-node
 
