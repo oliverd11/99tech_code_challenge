@@ -1,19 +1,19 @@
 version: '3'
 
 services:
-  problem6:
+  problem5:
     build: .
-    image: problem6
+    image: problem5
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/problem6
+      - MONGODB_URL=mongodb://mongodb:27017/problem5
     ports:
       - '3000:3000'
     depends_on:
       - mongodb
     volumes:
-      - .:/usr/src/problem6
+      - .:/usr/src/problem5
     networks:
-      - problem6-network
+      - problem5-network
 
   mongodb:
     image: mongo:4.2.1-bionic
@@ -22,11 +22,11 @@ services:
     volumes:
       - dbdata:/data/db
     networks:
-      - problem6-network
+      - problem5-network
 
 volumes:
   dbdata:
 
 networks:
-  problem6-network:
+  problem5-network:
     driver: bridge
