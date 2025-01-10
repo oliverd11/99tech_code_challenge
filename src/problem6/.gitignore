@@ -1,0 +1,17 @@
+# Dependencies
+node_modules
+
+# error logs
+error.log
+
+# Environment varibales
+# .env*
+
+# Code coverage
+coverage
+
+# Launch configuration
+launch.json
+
+# Package manager
+package-lock.json
