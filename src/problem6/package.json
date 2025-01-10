@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "serve": "node dist/index.js"
+    "serve": "node dist/index.js",
+    "docker:run": "docker-compose -f docker-compose.yaml up -d"
   },
   "author": "",
   "license": "ISC",

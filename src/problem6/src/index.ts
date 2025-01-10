@@ -1,6 +1,7 @@
 import express from "express";
-import connectToDB from "./database";
+import connectToDB from "./database/index";
 import resourceRoutes from "./routes/resourceRoutes";
+import healthCheckRoutes from "./routes/healthCheckRoutes";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger/swagger.json";
 import { errorHandler } from "./utils/errorInterceptor";
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(mongoSantinize());
 
+app.use("/healthcheck", healthCheckRoutes);
 app.use("/resources", resourceRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

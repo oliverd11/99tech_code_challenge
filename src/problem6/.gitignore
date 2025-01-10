@@ -5,7 +5,8 @@ node_modules
 error.log
 
 # Environment varibales
-# .env*
+.env*
+!.env*.example
 
 # Code coverage
 coverage

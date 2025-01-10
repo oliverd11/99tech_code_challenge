@@ -2,13 +2,21 @@
 
 This is a simple CRUD API built with **Express**, **TypeScript**, **MongoDB**, and **Swagger UI** for API documentation.
 
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (version >= 18)
+- Docker
+
 ## Setup and Installation
+
+Follow these step to install and run this application locally:
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/express-crud-ts.git
-    cd express-crud-ts
+    git clone git@github.com:oliverd11/99tech_code_challenge.git
+    cd src/problem6
     ```
 
 2. Install dependencies:
@@ -17,13 +25,49 @@ This is a simple CRUD API built with **Express**, **TypeScript**, **MongoDB**, a
     npm install
     ```
 
-3. Start MongoDB locally or use MongoDB Atlas.
-
-4. Start the server:
+3. Set the environment variables:
 
     ```bash
-    npm run start
+    cp .env.example .env
     ```
+
+4. Set the docker compose file:
+
+    ```bash
+    cp docker-compose.yaml.example docker-compose.yaml
+    ```
+
+5. Start docker container:
+
+    ```bash
+    npm run docker:run
+    ```
+
+## Commands
+
+Running locally:
+
+```bash
+npm run start
+```
+
+Docker:
+
+```bash
+# run docker container
+npm run docker:run
+```
+
+## Environment Variables
+
+The environment variables can be found and modified in the `.env` file. They come with these default values:
+
+```bash
+# Port number
+PORT=5000
+# URL of the Mongo DB
+MONGODB_URL=mongodb://127.0.0.1:27017/resource_demo
+```
 
 ## Endpoints
 
@@ -35,7 +79,7 @@ This is a simple CRUD API built with **Express**, **TypeScript**, **MongoDB**, a
 
 ## API Documentation
 
-You can view the API documentation at `/api-docs`.
+You can view the API documentation at `http://localhost:5000/api-docs`.
 
 ## License
 
