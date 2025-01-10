@@ -12,6 +12,6 @@ RUN npm install -g typescript ts-node
 
 COPY --chown=node:node . .
 
-EXPOSE 3000
+EXPOSE 5000
 
 CMD [ "ts-node", "src/index.ts" ]
