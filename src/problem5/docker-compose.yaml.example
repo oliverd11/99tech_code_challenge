@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  problem5:
+    build: .
+    image: problem5
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/problem5
+    ports:
+      - '5000:5000'
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/usr/src/problem5
+    networks:
+      - problem5-network
+
+  mongodb:
+    image: mongo:4.2.1-bionic
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - problem5-network
+
+volumes:
+  dbdata:
+
+networks:
+  problem5-network:
+    driver: bridge
